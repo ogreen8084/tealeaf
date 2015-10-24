@@ -3,19 +3,22 @@ deck = []
 
 def count_hand(hand)
   score = 0
-  ace = false
+  ace = 0
   hand.each do |c|
     if c[1] == "J" || c[1] == "Q" || c[1] == "K" || c[1] == "1"
       score += 10
     elsif c[1] == "A"
-      ace = true
+      ace += 1
       score += 11
     else
       score += c[1].to_i
     end
   end
-  if ace == true && score > 21
-    score -= 10
+  while ace >=1 
+    if score > 21
+      score -= 10
+    end
+    ace -= 1
   end
 
   return score
